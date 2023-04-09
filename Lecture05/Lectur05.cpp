@@ -35,12 +35,25 @@ void gotoxy(int x, int y) {
 
 int print_game_screen(int stage_width, int stage_height)
 {
-    gotoxy(5, 5);
 
+    std::cout << "스테이지 크기를 입력하세요: ";
+    std::cin >> stage_height >> stage_width;
+
+    for (int i = 1; i <= stage_height; i++) {
+        for (int j = 1; j <= stage_width; j++) {
+            if (i == 1 || i == stage_height || j == 1 || j == stage_width) {
+                std::cout << "*";
+            }
+            else {
+                std::cout << " ";
+            }
+        }
+        std::cout << std::endl;
+    }
+    int x = stage_width / 2 - 1;
+    int y = stage_height / 2;
+    gotoxy(x, y);
     std::cout << "^^";
-    
-
-
     return 0;
 }
 
@@ -87,8 +100,12 @@ int main()
             }
             break;
         case 1:
-            print_game_screen(10,10);
+            print_game_screen(30, 20);
             key_input = _getch();
+            if (key_input) {
+                std::cout << std::endl;
+                print_title_screen();
+            }
         case 2:
             print_introduction_screen();
             key_input = _getch();
