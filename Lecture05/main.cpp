@@ -39,9 +39,9 @@ int print_game_screen(int stage_width, int stage_height)
     std::cout << "스테이지 크기를 입력하세요: ";
     std::cin >> stage_height >> stage_width;
 
-    for (int i = 1; i <= stage_height; i++) {
-        for (int j = 1; j <= stage_width; j++) {
-            if (i == 1 || i == stage_height || j == 1 || j == stage_width) {
+    for (int i = 1; i <= stage_height+2; i++) {
+        for (int j = 1; j <= stage_width+2; j++) {
+            if (i == 1 || i == stage_height+2 || j == 1 || j == stage_width+2) {
                 std::cout << "*";
             }
             else {
@@ -50,8 +50,8 @@ int print_game_screen(int stage_width, int stage_height)
         }
         std::cout << std::endl;
     }
-    int x = stage_width / 2 - 1;
-    int y = stage_height / 2;
+    int x = (stage_width + 2) / 2 - 1;
+    int y = (stage_height + 2)/ 2;
     gotoxy(x, y);
     std::cout << "^^";
     return 0;
@@ -103,7 +103,7 @@ int main()
         case 1:
             print_game_screen(30,20);
             key_input = _getch();
-            if (key_input) {
+            if (key_input == 27) {
                 std::cout << std::endl;
                 print_title_screen();
             }
