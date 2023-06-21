@@ -89,11 +89,11 @@ namespace MuSoeun
             int ch = _getch();
             switch (ch)
             {
-            case '1':                
+            case '1':  
                 python->Snake::Snake(9, 9);
                 isGame = true;
                 while (isGame)
-                {
+                {  
                     isGame3 = true;
                     system("cls");
                     if (!food_available)
@@ -116,12 +116,13 @@ namespace MuSoeun
                             print_title_screen();
                             isGame = false;
                             isGame3 = false;
+                            score = 0;
                         } 
                     }
                     if (isGame3) 
                     {
                         board->print();
-                        cout << endl << "SCORE: " << score;
+                        cout << endl << "SCORE: " << score ;
                         Sleep(speed - (score * 5));
                         if (_kbhit())
                         {
@@ -167,6 +168,7 @@ namespace MuSoeun
                             print_title_screen();
                             isGame = false;
                             isGame3 = false;
+                            score = 0;
                         }                        
                     }                    
                 }
